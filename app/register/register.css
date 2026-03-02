@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-page {
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+}
+
+.auth-box {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.auth-box h2 {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 28px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.input-group input:focus {
+  border-color: #16c784;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(22, 199, 132, 0.15);
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  background: #16c784;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s ease;
+}
+
+.auth-btn:hover {
+  background: #13a76c;
+}
+
+.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.switch-text span {
+  margin-left: 5px;
+  color: #16c784;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.switch-text span:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .auth-box {
+    padding: 30px;
+  }
+
+  .auth-box h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 15px;
+    align-items: flex-start;
+  }
+
+  .auth-box {
+    padding: 25px 20px;
+    border-radius: 12px;
+  }
+
+  .auth-box h2 {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .input-group input {
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+
+  .auth-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .auth-box {
+    padding: 20px 15px;
+  }
+}

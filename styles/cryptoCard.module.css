@@ -1,0 +1,89 @@
+.card {
+  background-color: var(--card-bg, #ffffff);
+  color: var(--text, #111827);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.coinInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.image {
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.details p {
+  margin: 8px 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.details span {
+  font-weight: 500;
+}
+
+.green {
+  color: #16c784; /* bright green for price up */
+  font-weight: 600;
+}
+
+.red {
+  color: #ea3943; /* red for price down */
+  font-weight: 600;
+}
+
+/* Responsive: tablets */
+@media (max-width: 1024px) {
+  .card {
+    padding: 18px;
+  }
+  .name {
+    font-size: 16px;
+  }
+  .details p {
+    font-size: 13px;
+  }
+}
+
+/* Responsive: mobile */
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+  }
+  .topSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .details p {
+    font-size: 12px;
+  }
+}

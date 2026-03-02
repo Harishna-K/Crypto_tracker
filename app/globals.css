@@ -1,0 +1,100 @@
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --navbar-bg: #ffffff;
+  --navbar-text: #111111;
+  --input-bg: #f0f0f0;
+  --button-bg: #222222;
+  --button-text: #ffffff;
+  --button-hover: #16c784;
+  --link-hover: #16c784;
+  --card-bg: #ffffff;
+}
+
+
+[data-theme="dark"] {
+  --bg: #0d1117;
+  --text: #ffffff;
+  --navbar-bg: #111827;
+  --navbar-text: #ffffff;
+  --input-bg: #1e293b;
+  --button-bg: #333333;
+  --button-text: #ffffff;
+  --button-hover: #16c784;
+  --link-hover: #16c784;
+  --card-bg: #1f2937;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: all 0.3s ease;
+  font-family: sans-serif;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--navbar-bg);
+  color: var(--navbar-text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid #222;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--navbar-text);
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: var(--link-hover);
+}
+
+.search input {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: var(--input-bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.actions button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: var(--button-hover);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: var(--navbar-bg);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #222;
+  }
+  .show { display: flex; }
+  .menuBtn { display: block; }
+  .search input { width: 120px; }
+}
