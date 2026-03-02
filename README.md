@@ -32,7 +32,7 @@ CryptoTracker is a modern cryptocurrency tracking application that fetches live 
 Clone the repository:
 
 ```bash
-git clone https://github.com/Harishna-K/Crypto_tracker
+git clone https://github.com/Harishna-K/Crypto_tracker.git
 cd CryptoTracker
 ```
 
