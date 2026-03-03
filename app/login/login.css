@@ -125,7 +125,7 @@
 @media (max-width: 480px) {
   .auth-page {
     padding: 15px;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .auth-box {

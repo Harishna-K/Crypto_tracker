@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import styles from "@/styles/Trending.module.css";
+import Image from "next/image";
 
 export default function Trending() {
   const [coins, setCoins] = useState([]);
@@ -11,16 +13,19 @@ export default function Trending() {
   }, []);
 
   return (
-    <div style={{ marginBottom: "30px" }}>
-      <h2>🔥 Trending Coins</h2>
-      <div style={{ display: "flex", gap: "15px", flexWrap: "wrap" }}>
+    <div className={styles.wrapper}>
+      <h2 className={styles.title}>🔥 Trending Coins</h2>
+
+      <div className={styles.coinList}>
         {coins.map((c) => (
-          <div
-            key={c.item.id}
-            style={{ display: "flex", alignItems: "center", gap: "5px" }}
-          >
-            <img src={c.item.small} width="20" alt={c.item.name} />
-            <span>{c.item.name}</span>
+          <div key={c.item.id} className={styles.coinCard}>
+            <Image
+              src={c.item.small}
+              width={20}
+              height={20}
+              alt={c.item.name}
+            />
+            <span className={styles.coinName}>{c.item.name}</span>
           </div>
         ))}
       </div>

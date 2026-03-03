@@ -1,4 +1,4 @@
-.card {
+.card { 
   background-color: var(--card-bg, #ffffff);
   color: var(--text, #111827);
   padding: 20px;
@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 12px; /* consistent spacing */
 }
 
 .card:hover {
@@ -20,7 +21,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  flex-wrap: wrap; /* ensure elements wrap on small screens */
+  gap: 10px;
 }
 
 .coinInfo {
@@ -30,6 +33,8 @@
 }
 
 .image {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid rgba(0,0,0,0.1);
 }
@@ -38,10 +43,17 @@
   font-size: 18px;
   font-weight: 700;
   color: var(--text);
+  margin: 0; /* remove default margin */
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .details p {
-  margin: 8px 0;
+  margin: 0;
   font-size: 14px;
   opacity: 0.85;
 }
@@ -60,10 +72,18 @@
   font-weight: 600;
 }
 
+/* Sparkline wrapper */
+.sparklineWrapper {
+  width: 100%;
+  height: 40px;
+  margin-top: 8px;
+}
+
 /* Responsive: tablets */
 @media (max-width: 1024px) {
   .card {
     padding: 18px;
+    gap: 10px;
   }
   .name {
     font-size: 16px;
@@ -77,13 +97,27 @@
 @media (max-width: 768px) {
   .card {
     padding: 16px;
+    gap: 8px;
   }
   .topSection {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
+  }
+  .coinInfo {
+    gap: 8px;
+  }
+  .image {
+    width: 30px;
+    height: 30px;
+  }
+  .name {
+    font-size: 15px;
   }
   .details p {
     font-size: 12px;
+  }
+  .sparklineWrapper {
+    height: 30px;
   }
 }

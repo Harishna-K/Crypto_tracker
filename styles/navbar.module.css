@@ -2,30 +2,36 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #111827;
-  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
+  background: #111827;
+  color: white;
+  padding: 10px 20px;
   border-bottom: 1px solid #222;
+  transition: background 0.3s ease;
+  flex-wrap: wrap;
 }
 
 .logo {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
+  flex-shrink: 0;
+  transition: font-size 0.3s ease;
 }
 
 .links {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .links a {
   text-decoration: none;
   color: white;
   font-size: 14px;
+  transition: color 0.3s ease;
 }
 
 .links a:hover {
@@ -40,12 +46,16 @@
   background: #222;
   color: white;
   width: 200px;
+  max-width: 100%;
+  transition: all 0.3s ease;
+  flex-grow: 1;
 }
 
 .actions {
   display: flex;
   gap: 10px;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .actions button {
@@ -55,6 +65,8 @@
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
 }
 
 .actions button:hover {
@@ -63,6 +75,20 @@
 
 .menuBtn {
   display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .search input {
+    width: 150px;
+  }
+  .logo {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -71,22 +97,68 @@
     flex-direction: column;
     position: absolute;
     top: 60px;
-    right: 20px;
-    background: #111;
-    padding: 10px;
+    right: 10px;
+    background: #111827;
+    padding: 15px 20px;
     border-radius: 8px;
     border: 1px solid #222;
+    gap: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
 
-  .show {
+  .links.show {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .menuBtn {
     display: block;
   }
 
-  .search input {
-    width: 120px;
+  .logo {
+    font-size: 10px;
   }
+
+  .search {
+    flex-basis: 30%;
+    margin: 0px 0;
+  }
+
+  .search input {
+    width:70%;
+    height: 8px;
+  }
+.search input::placeholder {
+    font-size: 10px;
+  }
+  .navbar {
+    padding: 8px 15px;
+  }
+
+  .actions button {
+    font-size: 8px;
+    padding: 5px 8px;
+  }
+}
+
+body.dark .navbar {
+  background: #0f172a;
+}
+
+body.dark .links a {
+  color: #e2e8f0;
+}
+
+body.dark .links a:hover {
+  color: #16c784;
+}
+
+body.dark .search input,
+body.dark .actions button {
+  background: #1e293b;
+  color: #e2e8f0;
 }

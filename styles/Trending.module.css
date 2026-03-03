@@ -1,0 +1,70 @@
+/* Container */
+.wrapper {
+  margin-bottom: 40px;
+}
+
+/* Title */
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Coins Grid */
+.coinList {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Individual Coin Card */
+.coinCard {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.coinCard:hover {
+  transform: translateY(-3px);
+  background: rgba(22, 199, 132, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.coinName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+}
+
+
+
+body.dark .coinCard {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark .coinName {
+  color: #f1f5f9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .coinList {
+    gap: 10px;
+  }
+
+  .coinCard {
+    padding: 8px 12px;
+  }
+
+  .coinName {
+    font-size: 13px;
+  }
+}

@@ -8,11 +8,7 @@ export default function BackButton() {
   return (
     <button
       onClick={() => router.back()}
-      style={{
-        padding: "8px 16px",
-        marginBottom: "20px",
-        cursor: "pointer",
-      }}
+      className="backButton"
     >
       ← Back
     </button>

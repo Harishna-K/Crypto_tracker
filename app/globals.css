@@ -1,100 +1,90 @@
+/* ===============================
+   ROOT THEME VARIABLES
+================================= */
 :root {
-  --bg: #ffffff;
-  --text: #111111;
-  --navbar-bg: #ffffff;
-  --navbar-text: #111111;
-  --input-bg: #f0f0f0;
-  --button-bg: #222222;
+  --bg: #f8fafc;
+  --text: #0f172a;
+
+  --navbar-bg: rgba(255, 255, 255, 0.7);
+  --navbar-text: #0f172a;
+
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(255, 255, 255, 0.4);
+
+  --input-bg: rgba(255, 255, 255, 0.8);
+  --input-border: #e2e8f0;
+
+  --button-bg: #16c784;
   --button-text: #ffffff;
-  --button-hover: #16c784;
-  --link-hover: #16c784;
-  --card-bg: #ffffff;
+  --button-hover: #0ea96c;
+
+  --accent: #16c784;
+  --accent-soft: rgba(22, 199, 132, 0.1);
+
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
-
+/* ===============================
+   DARK MODE
+================================= */
 [data-theme="dark"] {
-  --bg: #0d1117;
-  --text: #ffffff;
-  --navbar-bg: #111827;
-  --navbar-text: #ffffff;
-  --input-bg: #1e293b;
-  --button-bg: #333333;
+  --bg: #0b1120;
+  --text: #f1f5f9;
+
+  --navbar-bg: rgba(15, 23, 42, 0.75);
+  --navbar-text: #f1f5f9;
+
+  --card-bg: rgba(30, 41, 59, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
+
+  --input-bg: rgba(30, 41, 59, 0.8);
+  --input-border: rgba(255, 255, 255, 0.1);
+
+  --button-bg: #16c784;
   --button-text: #ffffff;
-  --button-hover: #16c784;
-  --link-hover: #16c784;
-  --card-bg: #1f2937;
+  --button-hover: #1ddf95;
+
+  --accent: #16c784;
+  --accent-soft: rgba(22, 199, 132, 0.15);
+
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-html, body {
-  background-color: var(--bg);
+/* ===============================
+   BASE
+================================= */
+html,
+body {
+  background: var(--bg);
   color: var(--text);
-  transition: all 0.3s ease;
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
+  transition: background 0.4s ease, color 0.4s ease;
 }
+/* ===============================
+   Back Button Styling
+================================= */
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: var(--navbar-bg);
-  color: var(--navbar-text);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  border-bottom: 1px solid #222;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.links a {
-  text-decoration: none;
-  color: var(--navbar-text);
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.links a:hover {
-  color: var(--link-hover);
-}
-
-.search input {
-  padding: 6px 12px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  background-color: var(--input-bg);
+.backButton {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 999px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
   color: var(--text);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.actions button {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow);
 }
 
-.actions button:hover {
-  background-color: var(--button-hover);
+.backButton:hover {
+  background: var(--accent);
   color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(22, 199, 132, 0.25);
 }
 
-@media (max-width: 768px) {
-  .links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: var(--navbar-bg);
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #222;
-  }
-  .show { display: flex; }
-  .menuBtn { display: block; }
-  .search input { width: 120px; }
+.backButton:active {
+  transform: scale(0.96);
 }

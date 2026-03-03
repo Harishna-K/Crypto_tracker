@@ -1,0 +1,105 @@
+/* Container for the top stats bar */
+.marketStats {
+  background-color: white;
+  color: black;
+  font-size: 14px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 10px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Left side stats container */
+.statsLeft {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.statsLeft span {
+  white-space: nowrap;
+}
+
+/* Right side buttons container */
+.statsRight {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.statsRight button {
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.statsRight button:hover {
+  opacity: 0.85;
+}
+
+/* Login & Signup button */
+.loginBtn {
+  background-color: #16c784;
+  color: white;
+}
+
+/* Logout button */
+.logoutBtn {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .marketStats {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 12px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .statsLeft {
+    gap: 12px;
+    font-size: 11px;
+    width: 100%;
+  }
+
+  .statsRight {
+    gap: 8px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .statsRight button {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .marketStats {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .statsLeft span {
+    display: block;
+  }
+
+  .statsRight button {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+}

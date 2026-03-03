@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import styles from "@/styles/table.module.css";
 import CryptoCard from "./CryptoCard";
 import Sparkline from "./Sparkline";
@@ -13,8 +13,6 @@ export default function CryptoTable() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [prevPrices, setPrevPrices] = useState({});
-  const [watchlist, setWatchlist] = useState([]);
-
   const router = useRouter();
   const ITEMS_PER_PAGE = 10;
 
@@ -22,13 +20,13 @@ export default function CryptoTable() {
     try {
       const res = await fetch(`/api/crypto?page=${page}`);
       if (!res.ok) throw new Error("API error");
-
       const result = await res.json();
+
       const coins = Array.isArray(result)
         ? result
         : Array.isArray(result.data)
-          ? result.data
-          : [];
+        ? result.data
+        : [];
 
       setData(coins);
 
@@ -50,25 +48,9 @@ export default function CryptoTable() {
   useEffect(() => {
     setLoading(true);
     fetchData();
-    const interval = setInterval(fetchData, 10000);
+    const interval = setInterval(fetchData, 10000); // refresh every 10s
     return () => clearInterval(interval);
   }, [fetchData]);
-
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("watchlist")) || [];
-    setWatchlist(saved);
-  }, []);
-
-  const toggleWatch = (id) => {
-    let updated;
-    if (watchlist.includes(id)) {
-      updated = watchlist.filter((coinId) => coinId !== id);
-    } else {
-      updated = [...watchlist, id];
-    }
-    setWatchlist(updated);
-    localStorage.setItem("watchlist", JSON.stringify(updated));
-  };
 
   const filteredData = useMemo(() => {
     return [...data]
@@ -76,10 +58,11 @@ export default function CryptoTable() {
       .sort((a, b) => (b[sortKey] ?? 0) - (a[sortKey] ?? 0));
   }, [data, search, sortKey]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p style={{ textAlign: "center" }}>Loading...</p>;
 
   return (
     <>
+      {/* Search and Sort Controls */}
       <div className={styles.controls}>
         <input
           type="text"
@@ -87,8 +70,7 @@ export default function CryptoTable() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-
-        <select onChange={(e) => setSortKey(e.target.value)}>
+        <select className={styles.selectcontainer} onChange={(e) => setSortKey(e.target.value)} value={sortKey}>
           <option value="market_cap">Market Cap</option>
           <option value="current_price">Price</option>
           <option value="price_change_percentage_1h_in_currency">1h %</option>
@@ -98,6 +80,7 @@ export default function CryptoTable() {
         </select>
       </div>
 
+      {/* Desktop Table */}
       <div className={styles.desktopTable}>
         <div className={styles.tableWrapper}>
           <table>
@@ -126,80 +109,37 @@ export default function CryptoTable() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        toggleWatch(coin.id);
+                        const saved = JSON.parse(localStorage.getItem("watchlist")) || [];
+                        const updated = saved.includes(coin.id)
+                          ? saved.filter((id) => id !== coin.id)
+                          : [...saved, coin.id];
+                        localStorage.setItem("watchlist", JSON.stringify(updated));
                       }}
-                      style={{
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                        fontSize: "18px",
-                      }}
+                      style={{ background: "none", border: "none", cursor: "pointer", fontSize: "18px" }}
                     >
-                      {watchlist.includes(coin.id) ? "★" : "☆"}
+                      {(JSON.parse(localStorage.getItem("watchlist")) || []).includes(coin.id) ? "★" : "☆"}
                     </button>
                   </td>
-
                   <td>{(page - 1) * ITEMS_PER_PAGE + index + 1}</td>
-
                   <td className={styles.coinCell}>
-                    <Image
-                      className={styles.icon}
-                      src={coin.image}
-                      width="25"
-                      height="25"
-                      alt={coin.name}
-                    />
+                    <Image src={coin.image} width={25} height={25} alt={coin.name} />
                     {coin.name}
                   </td>
-
                   <td>${coin.current_price.toLocaleString()}</td>
-
-                  <td
-                    style={{
-                      color:
-                        coin.price_change_percentage_1h_in_currency >= 0
-                          ? "#16c784"
-                          : "#ea3943",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {coin.price_change_percentage_1h_in_currency >= 0
-                      ? "▲"
-                      : "▼"}{" "}
+                  <td style={{ color: coin.price_change_percentage_1h_in_currency >= 0 ? "#16c784" : "#ea3943", fontWeight: "bold" }}>
+                    {coin.price_change_percentage_1h_in_currency >= 0 ? "▲" : "▼"}{" "}
                     {coin.price_change_percentage_1h_in_currency?.toFixed(2)}%
                   </td>
-
-                  <td
-                    style={{
-                      color:
-                        coin.price_change_percentage_24h >= 0
-                          ? "#16c784"
-                          : "#ea3943",
-                      fontWeight: "bold",
-                    }}
-                  >
+                  <td style={{ color: coin.price_change_percentage_24h >= 0 ? "#16c784" : "#ea3943", fontWeight: "bold" }}>
                     {coin.price_change_percentage_24h >= 0 ? "▲" : "▼"}{" "}
                     {coin.price_change_percentage_24h?.toFixed(2)}%
                   </td>
-
-                  <td
-                    style={{
-                      color:
-                        coin.price_change_percentage_7d_in_currency >= 0
-                          ? "#16c784"
-                          : "#ea3943",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {coin.price_change_percentage_7d_in_currency >= 0
-                      ? "▲"
-                      : "▼"}{" "}
+                  <td style={{ color: coin.price_change_percentage_7d_in_currency >= 0 ? "#16c784" : "#ea3943", fontWeight: "bold" }}>
+                    {coin.price_change_percentage_7d_in_currency >= 0 ? "▲" : "▼"}{" "}
                     {coin.price_change_percentage_7d_in_currency?.toFixed(2)}%
                   </td>
-
                   <td>${coin.total_volume.toLocaleString()}</td>
                   <td>${coin.market_cap.toLocaleString()}</td>
-
                   <td>
                     <Sparkline prices={coin.sparkline_in_7d?.price || []} />
                   </td>
@@ -210,12 +150,14 @@ export default function CryptoTable() {
         </div>
       </div>
 
+      {/* Mobile Cards */}
       <div className={styles.mobileCards}>
         {filteredData.map((coin) => (
           <CryptoCard key={coin.id} coin={coin} />
         ))}
       </div>
 
+      {/* Pagination */}
       <div className={styles.pagination}>
         <button
           className={styles.pageBtn}
@@ -224,9 +166,7 @@ export default function CryptoTable() {
         >
           Prev
         </button>
-
         <span className={styles.pageNumber}>Page {page}</span>
-
         <button
           className={styles.pageBtn}
           disabled={data.length < ITEMS_PER_PAGE}
