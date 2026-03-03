@@ -23,7 +23,7 @@ CryptoTracker is a modern cryptocurrency tracking application that fetches live 
 - **Frontend**: Next.js 13, React 18, CSS Modules  
 - **API**: CoinGecko REST API  
 - **State Management**: React Context API  
-- **Deployment**: Vercel / Netlify  
+- **Deployment**: Vercel 
 
 ---
 
